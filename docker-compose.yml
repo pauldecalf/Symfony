@@ -36,12 +36,14 @@ services:
     depends_on:
       - php
     networks:
-      - web
+      - symfony-network  # 👈 pour parler à PHP
+      - web              # 👈 pour exposer à Traefik
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.symfony.rule=Host(`symfony.pauldecalf.fr`)"
       - "traefik.http.routers.symfony.entrypoints=websecure"
       - "traefik.http.routers.symfony.tls.certresolver=letsencrypt"
+
 
 
 volumes:
