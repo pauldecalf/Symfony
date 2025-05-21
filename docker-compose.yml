@@ -27,6 +27,8 @@ services:
   nginx:
     image: nginx:alpine
     container_name: symfony-nginx
+    expose:
+      - "80"  # ✅ permet au reverse proxy d'accéder au port sans le publier sur l'hôte
     ports:
       - "8080:80"
     volumes:
